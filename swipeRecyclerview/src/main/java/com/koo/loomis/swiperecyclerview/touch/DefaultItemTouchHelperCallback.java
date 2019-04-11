@@ -16,10 +16,10 @@
 package com.koo.loomis.swiperecyclerview.touch;
 
 import android.graphics.Canvas;
-import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.helper.ItemTouchHelper;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.recyclerview.widget.ItemTouchHelper;
 
 /**
  * Created by Yolanda on 2016/4/19.
@@ -123,7 +123,7 @@ public class DefaultItemTouchHelperCallback extends ItemTouchHelper.Callback {
         if (actionState == ItemTouchHelper.ACTION_STATE_SWIPE) {
             //1.ItemView--ViewHolder; 2.侧滑条目的透明度程度关联谁？dX(delta增量，范围：当前条目-width~width)。
             RecyclerView.LayoutManager layoutManager = recyclerView.getLayoutManager();
-            float alpha = 1;
+            float                      alpha         = 1;
             if (layoutManager instanceof LinearLayoutManager) {
                 int orientation = ((LinearLayoutManager) layoutManager).getOrientation();
                 if (orientation == LinearLayoutManager.HORIZONTAL) {

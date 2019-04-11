@@ -15,7 +15,7 @@
  */
 package com.koo.loomis.swiperecyclerview.widget;
 
-import android.support.annotation.ColorInt;
+import androidx.annotation.ColorInt;
 
 /**
  * <p>

@@ -15,7 +15,7 @@
  */
 package com.koo.loomis.swiperecyclerview.touch;
 
-import android.support.v7.widget.helper.MyCompatItemTouchHelper;
+import androidx.recyclerview.widget.MyCompatItemTouchHelper;
 
 /**
  * Created by Yolanda on 2016/4/19.
