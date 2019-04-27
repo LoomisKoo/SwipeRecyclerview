@@ -16,9 +16,12 @@
 package com.koo.loomis.swiperecyclerview;
 
 import android.content.Context;
+
+import androidx.annotation.NonNull;
 import androidx.collection.SparseArrayCompat;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.StaggeredGridLayoutManager;
+
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -141,7 +144,9 @@ public class SwipeAdapterWrapper extends RecyclerView.Adapter<RecyclerView.ViewH
 
         try {
             Field itemView = getSupperClass(viewHolder.getClass()).getDeclaredField("itemView");
-            if (!itemView.isAccessible()) itemView.setAccessible(true);
+            if (!itemView.isAccessible()) {
+                itemView.setAccessible(true);
+            }
             itemView.set(viewHolder, contentView);
         }
         catch (Exception ignored) {
@@ -150,12 +155,15 @@ public class SwipeAdapterWrapper extends RecyclerView.Adapter<RecyclerView.ViewH
     }
 
     @Override
-    public final void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
+        mAdapter.onBindViewHolder(holder, position);
     }
 
     @Override
     public final void onBindViewHolder(RecyclerView.ViewHolder holder, int position, List<Object> payloads) {
-        if (isHeaderOrFooter(holder)) return;
+        if (isHeaderOrFooter(holder)) {
+            return;
+        }
 
         View itemView = holder.itemView;
         position -= getHeaderItemCount();

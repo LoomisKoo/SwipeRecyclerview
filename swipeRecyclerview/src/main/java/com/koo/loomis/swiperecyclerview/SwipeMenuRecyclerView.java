@@ -16,11 +16,13 @@
 package com.koo.loomis.swiperecyclerview;
 
 import android.content.Context;
+
 import androidx.annotation.IntDef;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.StaggeredGridLayoutManager;
+
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
@@ -93,7 +95,8 @@ public class SwipeMenuRecyclerView extends RecyclerView {
 
     public SwipeMenuRecyclerView(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
-        mScaleTouchSlop = ViewConfiguration.get(getContext()).getScaledTouchSlop();
+        mScaleTouchSlop = ViewConfiguration.get(getContext())
+                                           .getScaledTouchSlop();
     }
 
     private void initializeItemTouchHelper() {
@@ -361,14 +364,17 @@ public class SwipeMenuRecyclerView extends RecyclerView {
      * Get the original adapter.
      */
     public Adapter getOriginAdapter() {
-        if (mAdapterWrapper == null) return null;
+        if (mAdapterWrapper == null) {
+            return null;
+        }
         return mAdapterWrapper.getOriginAdapter();
     }
 
     @Override
     public void setAdapter(Adapter adapter) {
         if (mAdapterWrapper != null) {
-            mAdapterWrapper.getOriginAdapter().unregisterAdapterDataObserver(mAdapterDataObserver);
+            mAdapterWrapper.getOriginAdapter()
+                           .unregisterAdapterDataObserver(mAdapterDataObserver);
         }
 
         if (adapter == null) {
